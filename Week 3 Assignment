@@ -1,0 +1,43 @@
+Week 3 Assignment
+
+1-2
+The resulting linked list will look like the values below:
+|->34->52->16->46->
+
+Where the node for 12 will exist in memory but it is not referenced. 
+
+3-5
+At work there has always been a joke that 80% of the time taken to complete a task 
+comes from the final 20% of it. I believe that it holds true in certain aspects 
+of life and seems like it stems from the fact that not all relationships are 
+linear. Another one seems to be weight loss, the first 20 lbs seem to come off
+quickly but the final 5 lbs are the actual struggle. The 80/20 relationship seems
+variable, but I do believe the Pareto Principle does have some value.
+
+6-7
+Going to get into more detail to avoid copying all of slide 22
+
+Insert (X, LinkToInsertAfter)
+	Node <- New Node with Data X
+	If head of the list is NULL
+		Make the head point to our Node
+		return Node
+	Else
+		Next <- LinkToInsertAfter.next
+		Node.next <- Next
+		LinkToInsertAfter.next <- Node
+		return Node
+
+8-10
+For the first portion of the question, if each Node is accessed at least once I 
+would say that the Transpose Method could be the right solution. I might recommend
+going to the Count method if memory isn't an issue.
+
+Second portion of the question states that each Node is only ever accessed once
+and has transactional data cleared after 24 hours from my understanding.
+I would recommend not to use a Self-Organizing List since it seems that MTF, 
+Count, and Transpose would potentially make the subsequent access of another element
+worse by pushing the element that will no longer be accessed for that day forward. 
+If you kept the list static, you would average a lookup time of O(n/2). 
+
+

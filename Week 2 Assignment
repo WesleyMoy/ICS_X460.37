@@ -1,0 +1,68 @@
+Week 2 Assignment
+
+1-2
+*Assuming eraseOne and countItems has been defined
+EraseAll(element)
+	count <- countItems(element)
+	if count is 0
+		return count
+	for index from (0, count)
+		eraseOne(element)
+	return count
+
+3-4
+*Assuming 0 based index for lists
+BinarySearch(list, target)
+	last <- length(list)
+	first <- 0
+	while last >= first
+		middle <- (first + last) / 2
+		if list[middle] = target
+			return middle
+		// The operator on the line below would change if 
+		// the list was sorted in descending order
+		else if list[middle] > target 
+			first <- middle + 1
+		else
+			last <- middle - 1
+		end if
+	endwhile
+	return -1 
+
+
+5-6
+This question seems the most confusing to me. Though it's bad to increment a
+value that will affect the loop, it appears that the original function would
+short circuit after finding the element to remove. You can possibly change the
+count value from being static to being a function that is invoked in every 
+while loop check instead so that there isn't an issue.
+EraseOne(element):
+    for index in range(countItems()):
+        if data[index] == element:
+            data[index] = data[count]
+    		count -= 1
+    		return true
+    return false
+
+7-8
+No, the Container data isn't the most efficient structure for finding an
+occurrence of an item. The Big-O would be O(n) where n is the number of 
+items in the list
+
+9-10
+When inserting items, the code should check whether the list is full.
+if the list is full we would likely double the size of the container in
+memory to allow for more data to be inserted. At machine level, we likely
+want contigous memory for our list so in order to allow for that we would 
+release that memory and occupy the space necessary for the new list which
+has doubled in size
+
+insert(element):
+    if count == data.len:
+        copy <- [None] * (countItems * 2)
+        for index in range(countItems):
+            copy[index] <- data[index]
+        data <- copy
+    data[countItems] <- element
+    countItems += 1
+    return data
